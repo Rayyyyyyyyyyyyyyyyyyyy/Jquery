@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .broder {
+            height: 500px;
+            border: 2px solid rgb(152, 182, 236);
+        }
+        
+        .broder a {
+            cursor: pointer;
+            /* 游標在觸控範圍的樣式 */
+            background: rgb(211, 223, 245);
+            border: 1px solid rgb(148, 162, 243);
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            /* 文字垂直置中 要兩行 */
+        }
+        
+        .broder a:hover,
+        .border a.change {
+            background: rgb(185, 209, 236);
+            color: mistyrose;
+        }
+        
+        .box {
+            transition: .5s;
+            overflow: hidden;
+            max-width: 0;
+        }
+        
+        .box.change {
+            flex-grow: 1;
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container broder d-flex p-0 my-3" id="pageHome">
+        <a class="p-3 d-block">2020新北耶誕城</a>
+        <div class="box">
+            <p class="p-3">夢幻音樂盒＆新北市耶誕城主燈秀 施展魔法將竹筍地標變身為夢幻音樂盒！主燈秀結合全台唯一迪士尼3D光雕投影秀，重現《阿拉丁》、《愛麗絲夢遊仙境》、《美女與野獸》、《白雪公主》等迪士尼經典動畫。
+            </p>
+        </div>
+
+        <a class="p-3 d-block">信義區最美耶誕樹</a>
+        <div class="box">
+            <p class="p-3">即將邁入12月份，大街小巷都充滿耶誕氛圍，不管是浪漫指數爆表的耶誕燈海，或是造型特殊的唯美耶誕樹，都讓不少網美們開始物色今年要衝哪幾個景點搶拍「耶誕美照」。繼去年走奇幻風、可穿越的巨型耶誕樹之後，今年新光三越信義新天地以全新主題「2020 XMAS耶誕奇幻之森」打造，目前已開始正式動工，吸引路過的民眾駐足拍照。</p>
+
+        </div>
+
+        <a class="p-3 d-block">台茂Shining耶誕嘉年華</a>
+        <div class="box">
+            <p class="p-3">這就是桃園人的耶誕城！坐落桃園蘆竹20年的桃園在地台茂購物中心，不斷的更新館內的櫃位、美食餐廳，今年更在戶外推出5,500坪的台茂公園，將台茂購物中心打造為一座大小朋友、老爸老媽、小情侶都愛來的人氣商城。而在2020年耶誕節強勢推出「Shining耶誕嘉年華」，預計將在11/26一直到明年初免費開放，用8公尺高的極光耶誕樹、耶誕光雕秀、市集野餐以及最震撼的300秒煙火秀等讓桃園人每週都來台茂報到。
+
+            </p>
+        </div>
+
+        <a class="p-3 d-block">華泰名品城聖誕村正式開村！</a>
+        <div class="box">
+            <p class="p-3">聖誕佳節即將來到，各家百貨及店家也紛紛開始為這個充滿溫馨的節日佈置，全台聖誕及跨年景點紛紛推出，而位於桃園的 GLORIA OUTLETS 華泰名品城便將帶來最原汁原味的美式聖誕村，不但將打造充滿異國氛圍的祝福系聖誕裝置，更將延續往年「露天飄雪市集」傳統，號召 36 個人氣攤位進駐園區，邀請民眾一起在純白浪漫雪景下，與家人共享美食、搜刮折扣好物，一同揮別被疫情籠罩的2020年！
+            </p>
+        </div>
+
+
+
+
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $("#pageHome a").click(function() {
+            $(".box, a").removeClass("change")
+            $(this).addClass("change").next(".box").addClass("change")
+        })
+    </script>
+</body>
+
+</html>
