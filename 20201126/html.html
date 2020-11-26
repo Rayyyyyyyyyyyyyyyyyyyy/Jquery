@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container pb-5">
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="getText">
+                get text
+            </button>
+            <button type="button" class="btn btn-primary" id="setText">
+                set text
+            </button>
+            <button type="button" class="btn btn-primary" id="getHtml">
+                get html
+            </button>
+            <button type="button" class="btn btn-primary" id="setHtml">
+                set html
+            </button>
+
+            <h1 id="source">Hello <span>world!</span></h1>
+            <h1 id="target"></h1>
+            <h2>.attr()</h2>
+            <div class="py-2">
+                <button type="button" class="btn btn-primary" id="getAttr">
+                    get attr
+                </button>
+                <button type="button" class="btn btn-primary" id="setAttr">
+                    set attr
+                </button>
+
+            </div>
+            <img src="images/pic1.jpg" id="sourceImg" alt="fuck off">
+        </div>
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="setLink">
+                set Link
+            </button>
+            <a href="https://www.google.com" id="link" title="google">google</a>
+        </div>
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="getProp">get prop</button>
+            <button type="button" class="btn btn-primary" id="setProp">set prop</button>
+
+        </div>
+        <div>
+            <input type="checkbox" id="checkbox"> 我同意使用者條款
+        </div>
+        <button class="btn btn-primary" id="go" disabled>go</button>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $("#getText").click(function() {
+            let content = $("#source").text();
+            //拿到指定的標籤內的文字
+            console.log(content)
+
+            $("#target").text(content)
+        })
+        $("#setText").click(function() {
+                $("#source").text("new content");
+            })
+            //取代指定標籤內的內容
+        $("#getHtml").click(function() {
+                let content = $("#source").html();
+                console.log(content);
+                $("#target").text(content)
+                    //用text() 會過濾HTML標籤
+                    //要標籤就要裝進變數裡
+            })
+            //取得body內的標籤跟內容
+        $("#setHtml").click(function() {
+                $("#source").html("new <span>content</span>");
+            })
+            //插入標籤與內容
+
+        $("#getAttr").click(function() {
+            let img = $("#sourceImg").attr("src")
+                // console.log(img);
+            let name = $("#sourceImg").attr("alt")
+            console.log(name);
+            //拿到標籤內屬性的內容
+        })
+        $("#setAttr").click(function() {
+            // $("#sourceImg").attr("src", "images/pic2.jpg").attr("alt", "MDF")
+            //改變標籤內屬性的內容
+            $("#sourceImg").attr({
+                "src": "images/pic2.jpg",
+                "alt": "MDF"
+            })
+        })
+
+        $("#setLink").click(function() {
+            $("#link").attr({
+                "href": "https://www.facebook.com",
+                "title": "facebook"
+            }).text("facebook")
+
+        })
+        $("#getProp").click(function() {
+            let checked = $("#checkbox").prop("checked")
+            console.log(checked);
+        })
+        $("#setProp").click(function() {
+            $("#checkbox").prop("checked", true)
+                // $("#go").prop("disabled", true)
+        })
+        $("#checkbox").click(function() {
+            let checked = $(this).prop("checked")
+                // if (checked) {
+                //     $("#go").prop("disabled", false)
+                // } else {
+                //     $("#go").prop("disabled", true)
+
+            // }
+            // $("#go").prop("disabled", !checked)
+
+            $("#go").prop("disabled", !$(this).prop("checked"))
+        })
+    </script>
+</body>
+
+</html>
