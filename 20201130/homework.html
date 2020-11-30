@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <style>
+        .row .carb {
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="list">
+            <!-- <div class="carb">
+                <div class="card-body">
+                    <img class="card-img-top" src="images/item-apple.jpg" alt="">
+                    <h5 class="card-title">apple</h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="btn">$$</div>
+                        <a class="btn btn-info"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carb">
+                <div class="card-body">
+                    <img class="card-img-top" src="images/item-banana.jpg" alt="">
+                    <h5 class="card-title">banana</h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="btn">$$</div>
+                        <a class="btn btn-info"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carb">
+                <div class="card-body">
+                    <img class="card-img-top" src="images/item-grape.jpg" alt="">
+                    <h5 class="card-title">grape</h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="btn">$$</div>
+                        <a class="btn btn-info"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="carb">
+                <div class="card-body">
+                    <img class="card-img-top" src="images/item-orange.jpg" alt="">
+                    <h5 class="card-title">orange</h5>
+                    <div>
+                        <div class="btn">price: $</div>
+                        <a class="btn btn-info"><i class="fas fa-cart-plus"></i></a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <!-- container -->
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div id="cart" class="cart card">
+                    <div class="card-body">
+                        <h3 class="card-title h5">購物車</h3>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-nowrap">品名</th>
+                                    <th class="text-nowrap">單價</th>
+                                    <th style="width:100px;">數量</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-list">
+                                <!-- <tr>
+                                    <td>apple</td>
+                                    <td>20</td>
+                                    <td>1</td>
+                                </tr> -->
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary btn-block">結帳</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'food.json',
+            type: 'GET',
+            dataType: 'json'
+        }).done(function(response) {
+            var lists = "";
+            for (i = 0; i < response.length; i++) {
+                lists += `<div class="carb">
+                <div class="card-body">
+                    <img class="card-img-top" src="images/${response[i]["image"]}" alt="">
+                    <h5 class="card-title">${response[i]["name"]}</h5>
+                    <div class="d-flex justify-content-between">
+                        <div class="btn" style="color:red">price:$${response[i]["price"]}</div>
+                        <a class="btn btn-primary add text-white" data-name="${response[i]["name"]}" data-price="${response[i]["price"]}">下去</a>
+                    </div>
+                </div>
+            </div>`
+            }
+            $("#list").append(lists);
+
+        })
+        $("#list").on("click", ".add", function() {
+            let name = $(this).data("name"),
+                price = $(this).data("price"),
+                item = ` <tr>
+                            <td>${name}</td>
+                            <td>${price}</td>
+                            <td><input type="number" class="form-control text-right" value="1"></td>
+                         </tr>`
+            $("#cart-list").append(item);
+
+        })
+    </script>
+
+</body>
+
+</html>

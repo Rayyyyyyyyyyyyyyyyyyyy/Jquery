@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="py-2">
+            <button type="button" class="btn btn-primary" id="append">append</button>
+            <button type="button" class="btn btn-primary" id="prepent">prepent</button>
+            <button type="button" class="btn btn-primary" id="appendTo">append to</button>
+            <button type="button" class="btn btn-primary" id="prependTo">prepent to</button>
+            <button type="button" class="btn btn-primary" id="after">after</button>
+            <button type="button" class="btn btn-primary" id="insertAfter">insert after</button>
+            <button type="button" class="btn btn-primary" id="before">before</button>
+
+            <button type="button" class="btn btn-primary" id="insertBefore">insert Before</button>
+            <button type="button" class="btn btn-primary" id="empty">empty</button>
+            <button type="button" class="btn btn-primary" id="remove">remove</button>
+
+
+        </div>
+        <table class="table table-border">
+            <tbody>
+                <tr id="move">
+                    <td>Jason</td>
+                    <td>jason@test.com</td>
+                    <td>090000000000000</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        let i = 1
+        $("#append").click(function() {
+                let content = `<tr>
+                <td>Sara ${i}</td>
+                <td>sara@test.com</td>
+                <td>090000000000000</td>
+            </tr>`;
+                //樣板字串的好處之一 可以在裡面換行
+                $("tbody").append(content)
+                i++
+            })
+            //append 把資料插到最後面
+        $("#prepent").click(function() {
+                let content = `<tr>
+                <td>John ${i}</td>
+                <td>john@test.com</td>
+                <td>090000000000000</td>
+            </tr>`;
+                $("tbody").prepend(content)
+                i++
+            })
+            //prepend 把資料插到最前面
+
+        $("#appendTo").click(function() {
+                $("#move").appendTo("tbody")
+            })
+            //先選擇要移動的物件 移動到目標的最後面
+            //要先有物件
+        $("#prependTo").click(function() {
+            $("#move").prependTo("tbody")
+                //移動到目標的最前面
+
+        })
+        $("#after").click(function() {
+                $("#move").after(`<tr>
+                <td>John ${i}</td>
+                <td>john@test.com</td>
+                <td>090000000000000</td>
+            </tr>`)
+                i++
+            })
+            //插在指定物件的後面
+        $("#insertAfter").click(function() {
+                $(`<tr>
+                <td>John ${i}</td>
+                <td>john@test.com</td>
+                <td>090000000000000</td>
+            </tr>`).insertAfter("#move")
+                i++
+            })
+            //直接插入內容在指定目標後面
+        $("#before").click(function() {
+                $("#move").before(`<tr>
+                <td>John ${i}</td>
+                <td>john@test.com</td>
+                <td>090000000000000</td>
+            </tr>`)
+                i++
+            })
+            //插在指定物件的前面
+        $("#insertBefore").click(function() {
+            $(`<tr>
+                <td>John ${i}</td>
+                <td>john@test.com</td>
+                <td>090000000000000</td>
+            </tr>`).insertBefore("#move")
+            i++
+            //直接插入內容在指定目標前面
+        })
+        $("#empty").click(function() {
+                $("tbody").empty()
+            })
+            //清空內容
+        $("#remove").click(function() {
+            $("tbody").remove()
+                //移除指定目標
+        })
+    </script>
+</body>
+
+</html>
