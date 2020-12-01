@@ -8,6 +8,7 @@
 <style>
     body {
         margin: 50px;
+        /* background: lightgray; */
     }
     
     .box img {
@@ -68,7 +69,6 @@
 <body>
     <div class="container">
 
-
         <div id="position"></div>
         <div class="card transition">
             <div class="card_wrap">
@@ -94,7 +94,7 @@
                 <img class="front" src="images/dr_strange.jpg" alt="">
             </div>
         </div>
-        <!-- <div class="card transition">
+        <div class="card transition">
             <div class="card_wrap">
                 <img class="back" src="images/card.jpg">
                 <img class="front" src="images/pic1.jpg" alt="">
@@ -153,29 +153,59 @@
                 <img class="back" src="images/card.jpg">
                 <img class="front" src="images/pic5.jpg" alt="">
             </div>
-        </div> -->
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
     <script>
-        let count = 0
-        $(".card").click(function() {
-            while (count >= 2) {
-                if ($(this).hasClass("active")) {
-                    $(".card").removeClass("active")
-                    count = 0
-                    return
-                }
-                $(".card").removeClass("active")
-                $(this).addClass("active")
-                count = 1
-                return
-            }
-            count++
-            $(this).toggleClass("active")
-                // console.log(count);
+        let cardLength = $(".container .card").length;
 
+
+        for (i = 0; i < cardLength; i++) {
+            let random = Math.floor(Math.random() * cardLength)
+            $(".container .card").eq(random).appendTo("#position")
+        }
+
+
+        setTimeout(() => {
+            $(".card").addClass("active");
+        }, 100)
+        setTimeout(removeClass, 2000)
+
+        let card1 = "1"
+        let card2 = "2"
+
+        $(".card").click(function() {
+            $(this).toggleClass("active")
+
+            if ($(".container .active").length % 2 == 1) {
+                card1 = $(this).find("img.front").attr("src")
+                    // console.log("card1: " + card1)
+            } else {
+                card2 = $(this).find("img.front").attr("src")
+                    // console.log("card2: " + card2)
+                setTimeout(removeClass, 600)
+            }
         })
+
+        function removeClass() {
+            if (card1 == card2) {
+                $(".container .active").addClass("bingo")
+                $(".container .card").removeClass("active")
+                let bingoLength = $(".container .bingo").length
+
+                if (($(".container .bingo").length) % 2 == 1) {
+                    $(".container .card").removeClass("bingo")
+                }
+
+                if (cardLength == bingoLength) {
+                    alert("恭喜喔")
+                    location.reload()
+                }
+            } else {
+                $(".container .card").removeClass("active")
+            }
+        }
     </script>
 </body>
 

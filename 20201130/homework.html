@@ -84,13 +84,16 @@
                                 </tr> -->
                             </tbody>
                         </table>
-                        <button class="btn btn-primary btn-block">結帳</button>
+                        <div class="d-flex">
+                            <a class="btn btn-primary form-control mx-2 text-white">結帳</a>
+                            <a class="btn btn-primary form-control text-white" id="clear">清空</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -109,7 +112,7 @@
                     <h5 class="card-title">${response[i]["name"]}</h5>
                     <div class="d-flex justify-content-between">
                         <div class="btn" style="color:red">price:$${response[i]["price"]}</div>
-                        <a class="btn btn-primary add text-white" data-name="${response[i]["name"]}" data-price="${response[i]["price"]}">下去</a>
+                        <a class="btn btn-primary add text-white" data-name="${response[i]["name"]}" data-price="${response[i]["price"]}">pay</a>
                     </div>
                 </div>
             </div>`
@@ -120,13 +123,22 @@
         $("#list").on("click", ".add", function() {
             let name = $(this).data("name"),
                 price = $(this).data("price"),
+                num = 1,
                 item = ` <tr>
                             <td>${name}</td>
                             <td>${price}</td>
-                            <td><input type="number" class="form-control text-right" value="1"></td>
+                            <td><input type="number" class="form-control text-right many" value="${num}"></td>
                          </tr>`
+
+
             $("#cart-list").append(item);
 
+
+        })
+
+
+        $("#clear").click(function() {
+            $("#cart-list").empty()
         })
     </script>
 
