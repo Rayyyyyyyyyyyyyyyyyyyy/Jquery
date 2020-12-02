@@ -8,12 +8,11 @@
 <style>
     body {
         margin: 50px;
-        /* background: lightgray; */
     }
-    
+    /*     
     .box img {
         width: 300px;
-    }
+    } */
     
     .card {
         position: relative;
@@ -23,6 +22,7 @@
         width: 200px;
         height: 280px;
         /*height:400px;*/
+        box-shadow: 3px 3px 10px rgb(0, 0, 0);
     }
     
     .card.active {
@@ -57,19 +57,18 @@
         transition: all .5s;
         -webkit-transition: all .5s;
     }
-    
-    .box:hover {
+    /* .box:hover {
         transform: rotateY(180deg);
         -webkit-transform: rotateY(180deg);
         transition: .5s;
-        /* opacity: 0; */
-    }
+        opacity: 0;
+    } */
 </style>
 
 <body>
     <div class="container">
-
         <div id="position"></div>
+
         <div class="card transition">
             <div class="card_wrap">
                 <img class="back" src="images/card.jpg">
